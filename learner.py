@@ -1,52 +1,61 @@
 from population import Population
+from tournament import Tournament
 from random import randint
 from random import random
 
-def fitness(desired, population):
+def evaluation(population, fitness):
 	fitness_scores = []
 
 	for chromosome in population: 
 		fitness_scores.append((chromosome, chromosome.count(1)))
 
-	return fitness_scores	
+	fitness_scores = sorted(fitness_scores, key = lambda x: x[1])	
 
-def selection(fitness_scores, pair_number):
-	 scores_sorted = sorted(fitness_scores, key = lambda x: x[1], reverse = True)
+	return [fitness_scores[i][0] for i in range(len(fitness_scores))]
 
-	 return scores_sorted[:pair_number * 2]
+# def selection(fitness_scores, selector, fitness):
+# 	 selector.select(fitness_scores)
+
+# 	 return scores_sorted[:2]
+
+def fitness(chromosome):
+	return chromosome.count(1)
 
 
-def crossover(selected):
-	selected = [selected[i][0] for i in range (len(selected))]
-	chrom_length = len(selected[0])
+def crossover(parents):
+	chrom_length = len(parents[0])
 	cross_point = randint(1, chrom_length - 1)
-	crossed = []
+	children = []
+	
+	children.append(parents[1][:cross_point] + parents[0][cross_point:])
+	children.append(parents[0][:cross_point] + parents[1][cross_point:])
 
-	for i in range(0, len(selected), 2):
-		crossed.append(selected[i + 1][:cross_point] + selected[i][cross_point:])
-		crossed.append(selected[i][:cross_point] + selected[i + 1][cross_point:])
-
-	return crossed + selected
+	return children
 
 
 def mutation(chromosomes, rate):
-	for chromosome in chromosomes:
-		for gene in chromosome:
-			rand_value = random()
-		 	
-			if rand_value <= rate:
-				chromosome[gene] = 0 if chromosome[gene] == 1 else 1
+	rand_index = randint(0, len(chromosomes) - 1)
+
+	chromosome = chromosomes[rand_index]
+	
+	for gene in chromosome:
+		rand_value = random()
+	 	
+		if rand_value <= rate:
+			chromosome[gene] = 0 if chromosome[gene] == 1 else 1
 		
-	return chromosomes		
+	return chromosome	
 
 
-population = Population(8, 10)
+population = Population(14, 10)
 generation = population.gen_initial()
-desired = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+desired = [0, 1, 1, 1, 1, 1, 1, 1, 1, 0]
 solved = False
 
 h_count = 0
 gen_count = 0
+
+selector = Tournament(3)
 
 while not solved:
 	for chromosome in generation:
@@ -61,10 +70,13 @@ while not solved:
 
 	print ("Generation: ", gen_count, "Fitness count:", h_count)
 
-	fitness_scores = fitness(desired, generation)
-	selected = selection(fitness_scores, 2)
-	crossed = crossover(selected)
-	new_generation = mutation(crossed, 0.10)
+	parents = selector.select(generation, fitness, 2)
+	children = crossover(parents)
+	eval_population = evaluation(generation, fitness)
+	mutated = mutation(eval_population, 0.3)
+
+	new_generation = children + eval_population[3:]
+	new_generation.append(mutated)
 	generation = new_generation
 
 	gen_count += 1
