@@ -7,10 +7,10 @@ class Population():
         self.chrom_length = chrom_length
 
     def gen_initial(self):
-    	population = []
+        population = []
 
-    	for i in range(0, self.size):
-    		chromosome = [randint(0, 1) for x in range(self.chrom_length)]
-    		population.append(chromosome)
-    	
-    	return population
+        for i in range(0, self.size):
+            chromosome = [randint(0, 1) for x in range(self.chrom_length)]
+            population.append(chromosome)
+        
+        return population
