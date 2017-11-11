@@ -12,6 +12,8 @@ class Elitism():
 
 	def select(self, population, children, mutated):
 		ranked_generation = self.evaluate(population)
+
 		new_generation = children + mutated
-		new_generationb += ranked_generation[len(mutated) + len(children):]
-		    
+		new_generation += ranked_generation[len(mutated) + len(children):]
+		
+		return new_generation    

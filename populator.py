@@ -1,6 +1,6 @@
 from random import randint
 
-class Population():
+class Populator():
     
     def __init__(self, size, chrom_length):
         self.size = size

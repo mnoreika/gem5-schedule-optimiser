@@ -3,20 +3,6 @@ from tournament import Tournament
 from random import randint
 from random import random
 
-def evaluation(population, fitness):
-    fitness_scores = []
-
-    for chromosome in population: 
-        fitness_scores.append((chromosome, chromosome.count(1)))
-
-    fitness_scores = sorted(fitness_scores, key = lambda x: x[1])   
-
-    return [fitness_scores[i][0] for i in range(len(fitness_scores))]
-
-# def selection(fitness_scores, selector, fitness):
-#    selector.select(fitness_scores)
-
-#    return scores_sorted[:2]
 
 def fitness(chromosome):
     return chromosome.count(1)
