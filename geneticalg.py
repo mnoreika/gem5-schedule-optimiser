@@ -21,10 +21,6 @@ class GeneticAlgorithm():
     def evaluation(self):
         self.eval_generation = self.evaluator.calculate_fitness(self.generation) 
 
-        print (self.eval_generation)
-        print ("TEST STOP")
-        sys.exit()
-
     def selection(self):
         self.parents = self.parent_selector.select(self.eval_generation, 
             self.breeding_size)
@@ -43,6 +39,9 @@ class GeneticAlgorithm():
 
     def search(self):
         gen_count = 0
+        logger = open('log.txt', 'a+')
+
+        logger.write("generation,hfitness\n")
 
         while gen_count < 10:
             self.evaluation()
@@ -51,7 +50,13 @@ class GeneticAlgorithm():
             self.mutation()
             self.survival()
 
+            log_message = str(gen_count) + "," + str(self.eval_generation[self.population_size - 1][1]) + "\n"
+            logger.write(log_message)
+
             print ("Generation: ", gen_count, 
                 "Highest Fitness:", self.eval_generation[self.population_size - 1][1])
 
             gen_count += 1
+            
+
+        logger.close()     

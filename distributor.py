@@ -24,25 +24,40 @@ class Distributor():
             print ("Connected to ", hostname)
 
             with Distributor.counter.get_lock():
-                Distributor.counter.value += 1      
+                Distributor.counter.value += 1  
 
-            stdin, stdout, stderr = client.exec_command(
-                'python Documents/CS4202/P2/code/test.py ' + str(job_id))
+            string_bytes = ["".join(map(str, chromosome)) for i in range(0, len(chromosome), 8)]
+            int_bytes = []
+         
+            for string_byte in string_bytes:
+                int_bytes.append(int(string_byte, 2))
+            
+            binary_result = bytearray(int_bytes) 
+
+            with open("tmpSched/" + str(job_id), "w") as file:
+                file.write(binary_result)    
+
+            print ()    
+
+            stdin, stdout, stderr = client.exec_command('cd /cs/home/mn55/Documents/CS4202/P2/CS4202_gensched/gem5/'
+                '; /usr/local/python/bin/python3 sim_task.py ' 
+                + str(job_id))
 
             stdin.channel.shutdown_write()
             stdout.channel.recv_exit_status()
             result = stdout.readlines()[0]
-            print (chromosome, result)
-            Distributor.eval_generation.append((chromosome, result))   
+            print ("Evaluated:", hostname, result)
+            fitness = 1 / int(result)
+            Distributor.eval_generation.append((chromosome, fitness))   
         except:
             Distributor.eval_generation.append((chromosome, 0))  
-            print ("Remote evaluation failed")
+            print (hostname, ": remote evaluation failed!")
             print (sys.exc_info()[0])
 
     def find_hosts(self):
         # Find available hosts
-        hosts = ['pc5-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(20, 50)]
-        hosts += ['pc3-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 50)]
+        # hosts = ['pc5-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(20, 50) if x != 26 and x != 24 and x!= 32]
+        hosts = ['pc3-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(0, 50)]
 
         for host in hosts:
             response = os.system("timeout 0.2 ping -c 1 -i 0.2 " + host)
