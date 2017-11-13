@@ -1,5 +1,6 @@
 import sys
 from populator import Populator
+from datetime import datetime
 
 class GeneticAlgorithm():
 
@@ -17,6 +18,7 @@ class GeneticAlgorithm():
         self.populator = Populator(self.population_size, self.chrom_length)
         self.generation = self.populator.gen_initial()
         self.survivor_selector = survivor_selector
+        self.logger = open('logs/log_' + str(datetime.now()), 'a+')
 
     def evaluation(self):
         self.eval_generation = self.evaluator.calculate_fitness(self.generation) 
@@ -39,11 +41,20 @@ class GeneticAlgorithm():
 
     def search(self):
         gen_count = 0
-        logger = open('log.txt', 'a+')
+        
+        self.logger.write("--- Running searcher --- " +
+            "\nPopulation Size: " + str(self.population_size) +
+            "\nChromosome Length: " + str(self.chrom_length) + 
+            "\nEvaluator: " + str(self.evaluator) +
+            "\nParent Selector:" + str(self.parent_selector) +
+            "\nBreeder: " + str(self.breeder) + 
+            "\nBreeding Size: " + str(self.breeding_size) + 
+            "\nMutator: " + str(self.mutator) + 
+            "\nMutation Rate: " + str(self.mutation_rate) + 
+            "\nSurvival Selector: " + str(self.survivor_selector)
+            + "\n\n")
 
-        logger.write("generation,hfitness\n")
-
-        while gen_count < 10:
+        while gen_count < 20:
             self.evaluation()
             self.selection()
             self.crossover()
@@ -52,6 +63,7 @@ class GeneticAlgorithm():
 
             log_message = str(gen_count) + "," + str(self.eval_generation[self.population_size - 1][1]) + "\n"
             logger.write(log_message)
+            logger.flush()
 
             print ("Generation: ", gen_count, 
                 "Highest Fitness:", self.eval_generation[self.population_size - 1][1])

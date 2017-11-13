@@ -11,7 +11,6 @@ class Distributor():
         self.manager = Manager()
         self.host_number = host_number
         self.available_hosts = []
-        self.find_hosts()
 
     def evaluate_remotely(hostname, ssh_password, job_id, chromosome):
         try:
@@ -20,28 +19,21 @@ class Distributor():
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             client.connect(hostname, username = "mn55", password = ssh_password, 
                 timeout = 3)
-        
+
             print ("Connected to ", hostname)
 
             with Distributor.counter.get_lock():
                 Distributor.counter.value += 1  
 
-            string_bytes = ["".join(map(str, chromosome)) for i in range(0, len(chromosome), 8)]
-            int_bytes = []
-         
-            for string_byte in string_bytes:
-                int_bytes.append(int(string_byte, 2))
-            
-            binary_result = bytearray(int_bytes) 
+            schedule = "".join(map(str, chromosome))
 
             with open("tmpSched/" + str(job_id), "w") as file:
-                file.write(binary_result)    
+                file.write(schedule)    
 
-            print ()    
-
+            print (hostname, ": running simulation...")    
             stdin, stdout, stderr = client.exec_command('cd /cs/home/mn55/Documents/CS4202/P2/CS4202_gensched/gem5/'
                 '; /usr/local/python/bin/python3 sim_task.py ' 
-                + str(job_id))
+                + str(job_id), timeout = 2400)
 
             stdin.channel.shutdown_write()
             stdout.channel.recv_exit_status()
@@ -70,9 +62,14 @@ class Distributor():
         self.available_hosts = self.available_hosts[:self.host_number]      
 
     def calculate_fitness(self, population): 
+        self.find_hosts()
+
         # Read ssh password 
         with open("pass", "r") as file:
             ssh_password = file.readline()
+
+        # Reset the result list
+        Distributor.eval_generation[:] = []
 
         # Spawn worker processes on different hosts and perform the simulations
         worker_pool = Pool(self.host_number)
