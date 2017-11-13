@@ -5,7 +5,8 @@ from tournament import Tournament
 from elitism import Elitism
 from singlemut import SingleMutator
 from onepointcross import OnePointCrossover
-
+from datetime import datetime
+import sys
 
 # Search using a genetic algorithm
 evaluator = Distributor(25)
@@ -14,7 +15,7 @@ survival_selector = Elitism()
 breeder = OnePointCrossover()
 mutator = SingleMutator()
 
-searcher = GeneticAlgorithm(25, 10, evaluator, 
+searcher = GeneticAlgorithm(25, 2385, evaluator, 
     parent_selector, breeder, 2, mutator, 0.3, survival_selector)
 
 searcher.search()

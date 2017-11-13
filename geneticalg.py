@@ -3,6 +3,7 @@ from populator import Populator
 from datetime import datetime
 
 class GeneticAlgorithm():
+    
 
     def __init__(self, population_size, chrom_length, evaluator, 
                  parent_selector, breeder, breeding_size, 
@@ -18,10 +19,24 @@ class GeneticAlgorithm():
         self.populator = Populator(self.population_size, self.chrom_length)
         self.generation = self.populator.gen_initial()
         self.survivor_selector = survivor_selector
-        self.logger = open('logs/log_' + str(datetime.now()), 'a+')
+        self.time = str(datetime.now())
+        self.result = open('results/r_' + self.time, 'a+')
+        self.logger = open('logs/log_' + self.time, 'a+')
+        
 
     def evaluation(self):
-        self.eval_generation = self.evaluator.calculate_fitness(self.generation) 
+        self.eval_generation = self.evaluator.calculate_fitness(self.generation)
+
+        # Log fitness values
+        for i in range(len(self.eval_generation)):
+            self.logger.write("Individual:" + str(i) + " Fitness: " + 
+                str(self.eval_generation[i][1]) + "\n") 
+
+        # Store the  current best chromosome
+        best_file = open('results/best_' + self.time, 'w')
+        best_chrom = "".join(map(str, self.eval_generation[self.population_size - 1][0]))
+        best_file.write(best_chrom) 
+        best_file.close()
 
     def selection(self):
         self.parents = self.parent_selector.select(self.eval_generation, 
@@ -42,6 +57,7 @@ class GeneticAlgorithm():
     def search(self):
         gen_count = 0
         
+        # log initial set up
         self.logger.write("--- Running searcher --- " +
             "\nPopulation Size: " + str(self.population_size) +
             "\nChromosome Length: " + str(self.chrom_length) + 
@@ -54,21 +70,28 @@ class GeneticAlgorithm():
             "\nSurvival Selector: " + str(self.survivor_selector)
             + "\n\n")
 
-        while gen_count < 20:
+        self.result.write("generation,hfitness")
+
+        while gen_count < 5:
             self.evaluation()
             self.selection()
             self.crossover()
             self.mutation()
             self.survival()
 
-            log_message = str(gen_count) + "," + str(self.eval_generation[self.population_size - 1][1]) + "\n"
-            logger.write(log_message)
-            logger.flush()
+            # Log results after each generation
+            res_message = str(gen_count) + "," + str(self.eval_generation[self.population_size - 1][1]) + "\n"
+            self.result.write(res_message)
+            self.result.flush()
 
-            print ("Generation: ", gen_count, 
-                "Highest Fitness:", self.eval_generation[self.population_size - 1][1])
+            log_message = "Generation: " + str(gen_count) + " Highest Fitness: "
+            log_message += str(self.eval_generation[self.population_size - 1][1])
+
+            print (log_message)
+            self.logger.write(log_message + "\n")
 
             gen_count += 1
             
 
-        logger.close()     
+        self.logger.close() 
+        self.result.close()

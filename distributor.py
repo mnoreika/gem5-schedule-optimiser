@@ -1,6 +1,7 @@
 import paramiko
 import os
 import sys
+from datetime import datetime
 from multiprocessing import Pool, Manager, Value
 
 class Distributor():
@@ -30,15 +31,18 @@ class Distributor():
             with open("tmpSched/" + str(job_id), "w") as file:
                 file.write(schedule)    
 
-            print (hostname, ": running simulation...")    
+            print (hostname, ": running simulation...") 
+    
             stdin, stdout, stderr = client.exec_command('cd /cs/home/mn55/Documents/CS4202/P2/CS4202_gensched/gem5/'
                 '; /usr/local/python/bin/python3 sim_task.py ' 
                 + str(job_id), timeout = 2400)
 
             stdin.channel.shutdown_write()
             stdout.channel.recv_exit_status()
+
             result = stdout.readlines()[0]
             print ("Evaluated:", hostname, result)
+
             fitness = 1 / int(result)
             Distributor.eval_generation.append((chromosome, fitness))   
         except:
@@ -48,7 +52,6 @@ class Distributor():
 
     def find_hosts(self):
         # Find available hosts
-        # hosts = ['pc5-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(20, 50) if x != 26 and x != 24 and x!= 32]
         hosts = ['pc3-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(0, 50)]
 
         for host in hosts:
