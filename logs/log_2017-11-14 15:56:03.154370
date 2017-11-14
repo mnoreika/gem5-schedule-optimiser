@@ -1,0 +1,37 @@
+--- Running searcher --- 
+Population Size: 25
+Chromosome Length: 200000
+Evaluator: <distributor.Distributor object at 0x7fad7dbb0390>
+Parent Selector:<tournament.Tournament object at 0x7fad70139748>
+Breeder: <onepointcross.OnePointCrossover object at 0x7fad701395f8>
+Breeding Size: 2
+Mutator: <singlemut.SingleMutator object at 0x7fad70139860>
+Mutation Rate: 0.3
+Survival Selector: <elitism.Elitism object at 0x7fad70139630>
+
+Individual:0 Fitness: 1.00000010000001e-07
+Individual:1 Fitness: 3.6531548645410175e-06
+Individual:2 Fitness: 3.965012727690856e-06
+Individual:3 Fitness: 3.9930520893645055e-06
+Individual:4 Fitness: 4.068199292946963e-06
+Individual:5 Fitness: 4.070418235473695e-06
+Individual:6 Fitness: 4.070799342158827e-06
+Individual:7 Fitness: 4.107872738102573e-06
+Individual:8 Fitness: 4.124425673724934e-06
+Individual:9 Fitness: 4.133820021743893e-06
+Individual:10 Fitness: 4.144390567367068e-06
+Individual:11 Fitness: 4.167187565112306e-06
+Individual:12 Fitness: 4.181930713771935e-06
+Individual:13 Fitness: 4.233180515516723e-06
+Individual:14 Fitness: 4.292600843925326e-06
+Individual:15 Fitness: 4.30361116012446e-06
+Individual:16 Fitness: 4.312036186607678e-06
+Individual:17 Fitness: 4.332924594113289e-06
+Individual:18 Fitness: 4.39363450233302e-06
+Individual:19 Fitness: 4.404393823278102e-06
+Individual:20 Fitness: 4.43146517533092e-06
+Individual:21 Fitness: 4.44480002844672e-06
+Individual:22 Fitness: 4.484606587887078e-06
+Individual:23 Fitness: 4.494058854194755e-06
+Individual:24 Fitness: 4.844538751465473e-06
+Generation: 0 Highest Fitness: 4.844538751465473e-06

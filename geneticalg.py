@@ -20,8 +20,8 @@ class GeneticAlgorithm():
         self.generation = self.populator.gen_initial()
         self.survivor_selector = survivor_selector
         self.time = str(datetime.now())
-        self.result = open('results/r_' + self.time, 'a+')
-        self.logger = open('logs/log_' + self.time, 'a+')
+        self.result = open('results/bodytrack/r_' + self.time, 'a+')
+        self.logger = open('logs/bodytrack/log_' + self.time, 'a+')
         
 
     def evaluation(self):
@@ -29,11 +29,13 @@ class GeneticAlgorithm():
 
         # Log fitness values
         for i in range(len(self.eval_generation)):
-            self.logger.write("Individual:" + str(i) + " Fitness: " + 
-                str(self.eval_generation[i][1]) + "\n") 
+            self.logger.write("Individual:" + str(i) + " Time: " + 
+                str(1 / self.eval_generation[i][1]) + "\n") 
 
-        # Store the  current best chromosome
-        best_file = open('results/best_' + self.time, 'w')
+        self.logger.flush()    
+
+        # Store the current best chromosome
+        best_file = open('results/bodytrack/best_' + self.time, 'w')
         best_chrom = "".join(map(str, self.eval_generation[self.population_size - 1][0]))
         best_file.write(best_chrom) 
         best_file.close()
@@ -70,9 +72,9 @@ class GeneticAlgorithm():
             "\nSurvival Selector: " + str(self.survivor_selector)
             + "\n\n")
 
-        self.result.write("generation,hfitness")
+        self.result.write("generation,hfitness\n")
 
-        while gen_count < 5:
+        while gen_count < 100:
             self.evaluation()
             self.selection()
             self.crossover()
@@ -84,11 +86,12 @@ class GeneticAlgorithm():
             self.result.write(res_message)
             self.result.flush()
 
-            log_message = "Generation: " + str(gen_count) + " Highest Fitness: "
-            log_message += str(self.eval_generation[self.population_size - 1][1])
+            log_message = "Generation: " + str(gen_count) + " Best Time : "
+            log_message += str(1 / self.eval_generation[self.population_size - 1][1])
 
             print (log_message)
             self.logger.write(log_message + "\n")
+            self.logger.flush()
 
             gen_count += 1
             

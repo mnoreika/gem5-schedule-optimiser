@@ -1,0 +1,11 @@
+--- Running searcher --- 
+Population Size: 25
+Chromosome Length: 500000
+Evaluator: <distributor.Distributor object at 0x7fa9dca00390>
+Parent Selector:<tournament.Tournament object at 0x7fa9cef89748>
+Breeder: <onepointcross.OnePointCrossover object at 0x7fa9cef895f8>
+Breeding Size: 2
+Mutator: <singlemut.SingleMutator object at 0x7fa9cef89860>
+Mutation Rate: 0.3
+Survival Selector: <elitism.Elitism object at 0x7fa9cef89630>
+

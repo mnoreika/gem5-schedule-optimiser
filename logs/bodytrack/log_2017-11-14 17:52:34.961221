@@ -1,0 +1,37 @@
+--- Running searcher --- 
+Population Size: 25
+Chromosome Length: 500000
+Evaluator: <distributor.Distributor object at 0x7f59918bc390>
+Parent Selector:<tournament.Tournament object at 0x7f5983e45748>
+Breeder: <onepointcross.OnePointCrossover object at 0x7f5983e455f8>
+Breeding Size: 2
+Mutator: <singlemut.SingleMutator object at 0x7f5983e45860>
+Mutation Rate: 0.3
+Survival Selector: <elitism.Elitism object at 0x7f5983e45630>
+
+Individual:0 Fitness: 0
+Individual:1 Fitness: 0
+Individual:2 Fitness: 0
+Individual:3 Fitness: 0
+Individual:4 Fitness: 0
+Individual:5 Fitness: 0
+Individual:6 Fitness: 0
+Individual:7 Fitness: 0
+Individual:8 Fitness: 0
+Individual:9 Fitness: 0
+Individual:10 Fitness: 0
+Individual:11 Fitness: 0
+Individual:12 Fitness: 0
+Individual:13 Fitness: 0
+Individual:14 Fitness: 0
+Individual:15 Fitness: 0
+Individual:16 Fitness: 0
+Individual:17 Fitness: 0
+Individual:18 Fitness: 0
+Individual:19 Fitness: 0
+Individual:20 Fitness: 0
+Individual:21 Fitness: 0
+Individual:22 Fitness: 0
+Individual:23 Fitness: 0
+Individual:24 Fitness: 0
+Generation: 0 Highest Fitness: 0

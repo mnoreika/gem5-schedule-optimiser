@@ -1,0 +1,63 @@
+--- Running searcher --- 
+Population Size: 25
+Chromosome Length: 200000
+Evaluator: <distributor.Distributor object at 0x7f9decaef390>
+Parent Selector:<tournament.Tournament object at 0x7f9ddf078780>
+Breeder: <onepointcross.OnePointCrossover object at 0x7f9ddf078630>
+Breeding Size: 2
+Mutator: <singlemut.SingleMutator object at 0x7f9ddf078898>
+Mutation Rate: 0.3
+Survival Selector: <elitism.Elitism object at 0x7f9ddf078668>
+
+Individual:0 Time: 77214.0
+Individual:1 Time: 76715.0
+Individual:2 Time: 76284.0
+Individual:3 Time: 75799.0
+Individual:4 Time: 74717.0
+Individual:5 Time: 73228.0
+Individual:6 Time: 72549.0
+Individual:7 Time: 71335.0
+Individual:8 Time: 69401.0
+Individual:9 Time: 68956.0
+Individual:10 Time: 68220.0
+Individual:11 Time: 65438.99999999999
+Individual:12 Time: 65385.99999999999
+Individual:13 Time: 65315.0
+Individual:14 Time: 65168.0
+Individual:15 Time: 65077.0
+Individual:16 Time: 64093.00000000001
+Individual:17 Time: 64049.0
+Individual:18 Time: 63802.00000000001
+Individual:19 Time: 63694.0
+Individual:20 Time: 62930.99999999999
+Individual:21 Time: 62220.0
+Individual:22 Time: 60198.0
+Individual:23 Time: 58513.0
+Individual:24 Time: 56100.0
+Generation: 0 Best Time : 56100.0
+Individual:0 Time: -1.0
+Individual:1 Time: 75799.0
+Individual:2 Time: 74717.0
+Individual:3 Time: 73228.0
+Individual:4 Time: 72549.0
+Individual:5 Time: 69401.0
+Individual:6 Time: 68956.0
+Individual:7 Time: 68554.0
+Individual:8 Time: 68220.0
+Individual:9 Time: 65438.99999999999
+Individual:10 Time: 65385.99999999999
+Individual:11 Time: 65315.0
+Individual:12 Time: 65168.0
+Individual:13 Time: 65077.0
+Individual:14 Time: 64093.00000000001
+Individual:15 Time: 64049.0
+Individual:16 Time: 63802.00000000001
+Individual:17 Time: 63694.0
+Individual:18 Time: 62930.99999999999
+Individual:19 Time: 62220.0
+Individual:20 Time: 60198.0
+Individual:21 Time: 60198.0
+Individual:22 Time: 58513.0
+Individual:23 Time: 56100.0
+Individual:24 Time: 56100.0
+Generation: 1 Best Time : 56100.0

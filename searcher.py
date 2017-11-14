@@ -15,7 +15,7 @@ survival_selector = Elitism()
 breeder = OnePointCrossover()
 mutator = SingleMutator()
 
-searcher = GeneticAlgorithm(25, 2385, evaluator, 
+searcher = GeneticAlgorithm(25, 200000, evaluator, 
     parent_selector, breeder, 2, mutator, 0.3, survival_selector)
 
 searcher.search()

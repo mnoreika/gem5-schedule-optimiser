@@ -28,7 +28,7 @@ class Distributor():
 
             schedule = "".join(map(str, chromosome))
 
-            with open("tmpSched/" + str(job_id), "w") as file:
+            with open("tmpSched2/" + str(job_id), "w") as file:
                 file.write(schedule)    
 
             print (hostname, ": running simulation...") 
@@ -46,13 +46,14 @@ class Distributor():
             fitness = 1 / int(result)
             Distributor.eval_generation.append((chromosome, fitness))   
         except:
-            Distributor.eval_generation.append((chromosome, 0))  
+            Distributor.eval_generation.append((chromosome, -1))  
             print (hostname, ": remote evaluation failed!")
             print (sys.exc_info()[0])
 
     def find_hosts(self):
         # Find available hosts
-        hosts = ['pc3-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(0, 50)]
+        # hosts = ['pc3-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 80) if x != 32]
+        hosts = ['pc2-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 100) if x != 32]
 
         for host in hosts:
             response = os.system("timeout 0.2 ping -c 1 -i 0.2 " + host)
@@ -82,4 +83,4 @@ class Distributor():
         worker_pool.close()
         worker_pool.join()
 
-        return sorted(self.eval_generation, key = lambda x: x[1])
+        return sorted(Distributor.eval_generation, key = lambda x: x[1])
