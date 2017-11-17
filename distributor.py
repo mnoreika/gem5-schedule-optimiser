@@ -49,7 +49,7 @@ class Distributor():
     def find_hosts(self):
         # Find available hosts
         hosts = ['pc3-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 80)]
-        #hosts = ['pc2-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 100) if x != 26 and x!= 40 and x!=93]
+        # hosts = ['pc2-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 100) if x != 26 and x!= 40 and x!=93]
 
         for host in hosts:
             response = os.system("timeout 0.2 ping -c 1 -i 0.2 " + host)

@@ -5,4 +5,4 @@ class Elitism():
 		new_generation = children + mutated
 		new_generation += ranked_generation[len(mutated) + len(children):]
 		
-		return new_generation    
+		return new_generation

@@ -20,8 +20,8 @@ class GeneticAlgorithm():
         self.generation = self.populator.gen_initial()
         self.survivor_selector = survivor_selector
         self.time = str(datetime.now())
-        self.result = open('results/r_' + self.time, 'a+')
-        self.logger = open('logs/log_' + self.time, 'a+')
+        self.result = open('results/bodytrack/r_' + self.time, 'a+')
+        self.logger = open('logs/bodytrack/log_' + self.time, 'a+')
 
     def evaluation(self):
         eval_results = self.evaluator.calculate_fitness(self.generation) 
@@ -36,7 +36,7 @@ class GeneticAlgorithm():
         self.eval_generation = sorted(self.eval_generation, key = lambda x: x[1])
 
         # Store the current best chromosome
-        best_file = open('results/best_' + self.time, 'w')
+        best_file = open('results/bodytrack/best_' + self.time, 'w')
         best_chrom = "".join(map(str, self.eval_generation[self.population_size - 1][0]))
         best_file.write(best_chrom) 
         best_file.close()
@@ -100,7 +100,7 @@ class GeneticAlgorithm():
             self.survival()
 
             self.gen_count += 1
-            
+
 
         self.logger.close() 
         self.result.close()
