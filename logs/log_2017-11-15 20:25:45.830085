@@ -1,0 +1,37 @@
+--- Running searcher --- 
+Population Size: 25
+Chromosome Length: 10
+Evaluator: <distributor.Distributor object at 0x7ff2dd6fe6a0>
+Parent Selector:<tournament.Tournament object at 0x7ff2d0145a20>
+Breeder: <onepointcross.OnePointCrossover object at 0x7ff2cfaae518>
+Breeding Size: 4
+Mutator: <multmut.MultipleMutator object at 0x7ff2cfaae5c0>
+Mutation Rate: 0.4
+Survival Selector: <elitism.Elitism object at 0x7ff2d5630908>
+
+Individual:0 Time: 1100011111
+Individual:1 Time: 1100111100
+Individual:2 Time: 0000000010
+Individual:3 Time: 1111000001
+Individual:4 Time: 0101111111
+Individual:5 Time: 0001011000
+Individual:6 Time: 0110010101
+Individual:7 Time: 1110001000
+Individual:8 Time: 1000110100
+Individual:9 Time: 1000100111
+Individual:10 Time: 0101000111
+Individual:11 Time: 0101100010
+Individual:12 Time: 0001001000
+Individual:13 Time: 0011011011
+Individual:14 Time: 1100001001
+Individual:15 Time: 0011101101
+Individual:16 Time: 0001011100
+Individual:17 Time: 1101100111
+Individual:18 Time: 1110110011
+Individual:19 Time: 0000110101
+Individual:20 Time: 0111110011
+Individual:21 Time: 1111001011
+Individual:22 Time: 1000010001
+Individual:23 Time: 1010001100
+Individual:24 Time: 0100001101
+Generation: 0 Best Time : 1111001011

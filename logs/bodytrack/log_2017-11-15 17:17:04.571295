@@ -1,0 +1,63 @@
+--- Running searcher --- 
+Population Size: 25
+Chromosome Length: 200000
+Evaluator: <distributor.Distributor object at 0x7f3a8d6bb550>
+Parent Selector:<tournament.Tournament object at 0x7f3a7fc3c7b8>
+Breeder: <onepointcross.OnePointCrossover object at 0x7f3a7fc3c5f8>
+Breeding Size: 4
+Mutator: <multmut.MultipleMutator object at 0x7f3a7fc3c8d0>
+Mutation Rate: 0.4
+Survival Selector: <elitism.Elitism object at 0x7f3a7fc3c6a0>
+
+Individual:0 Time: 270372
+Individual:1 Time: 262327
+Individual:2 Time: 252993
+Individual:3 Time: 246061
+Individual:4 Time: 246014
+Individual:5 Time: 243438
+Individual:6 Time: 240028
+Individual:7 Time: 239874
+Individual:8 Time: 236102
+Individual:9 Time: 235640
+Individual:10 Time: 235449
+Individual:11 Time: 235352
+Individual:12 Time: 235015
+Individual:13 Time: 233432
+Individual:14 Time: 233179
+Individual:15 Time: 230687
+Individual:16 Time: 228290
+Individual:17 Time: 225418
+Individual:18 Time: 222860
+Individual:19 Time: 222442
+Individual:20 Time: 215280
+Individual:21 Time: 213739
+Individual:22 Time: 213176
+Individual:23 Time: 207006
+Individual:24 Time: 203445
+Generation: 0 Best Time : 203445
+Individual:0 Time: -1
+Individual:1 Time: 2930746
+Individual:2 Time: 283004
+Individual:3 Time: 256432
+Individual:4 Time: 255114
+Individual:5 Time: 251461
+Individual:6 Time: 246218
+Individual:7 Time: 245986
+Individual:8 Time: 243137
+Individual:9 Time: 241831
+Individual:10 Time: 241628
+Individual:11 Time: 241603
+Individual:12 Time: 239102
+Individual:13 Time: 237010
+Individual:14 Time: 234693
+Individual:15 Time: 234531
+Individual:16 Time: 233475
+Individual:17 Time: 231939
+Individual:18 Time: 226042
+Individual:19 Time: 225945
+Individual:20 Time: 225689
+Individual:21 Time: 224765
+Individual:22 Time: 222860
+Individual:23 Time: 213739
+Individual:24 Time: 212425
+Generation: 1 Best Time : 212425

@@ -1,0 +1,115 @@
+--- Running searcher --- 
+Population Size: 25
+Chromosome Length: 200000
+Evaluator: <distributor.Distributor object at 0x7f24af5ad6a0>
+Parent Selector:<tournament.Tournament object at 0x7f24a74df438>
+Breeder: <onepointcross.OnePointCrossover object at 0x7f24a195c588>
+Breeding Size: 4
+Mutator: <multmut.MultipleMutator object at 0x7f24a195c630>
+Mutation Rate: 0.4
+Survival Selector: <elitism.Elitism object at 0x7f24a1ff57b8>
+
+Individual:0 Time: 9999999
+Individual:1 Time: 230851
+Individual:2 Time: 241147
+Individual:3 Time: 234182
+Individual:4 Time: 226606
+Individual:5 Time: -1
+Individual:6 Time: 221503
+Individual:7 Time: 227402
+Individual:8 Time: 216882
+Individual:9 Time: -1
+Individual:10 Time: 9999999
+Individual:11 Time: 221752
+Individual:12 Time: 232098
+Individual:13 Time: 214393
+Individual:14 Time: 237443
+Individual:15 Time: 226116
+Individual:16 Time: 225877
+Individual:17 Time: 244621
+Individual:18 Time: 235745
+Individual:19 Time: 242031
+Individual:20 Time: 224890
+Individual:21 Time: 236468
+Individual:22 Time: 255489
+Individual:23 Time: 226191
+Individual:24 Time: 234779
+Generation: 0 Best Time : -1
+Individual:0 Time: -1
+Individual:1 Time: -1
+Individual:2 Time: -1
+Individual:3 Time: -1
+Individual:4 Time: -1
+Individual:5 Time: -1
+Individual:6 Time: -1
+Individual:7 Time: -1
+Individual:8 Time: -1
+Individual:9 Time: -1
+Individual:10 Time: -1
+Individual:11 Time: -1
+Individual:12 Time: -1
+Individual:13 Time: -1
+Individual:14 Time: -1
+Individual:15 Time: -1
+Individual:16 Time: -1
+Individual:17 Time: -1
+Individual:18 Time: -1
+Individual:19 Time: -1
+Individual:20 Time: -1
+Individual:21 Time: -1
+Individual:22 Time: -1
+Individual:23 Time: -1
+Individual:24 Time: -1
+Generation: 1 Best Time : -1
+Individual:0 Time: -1
+Individual:1 Time: -1
+Individual:2 Time: -1
+Individual:3 Time: -1
+Individual:4 Time: -1
+Individual:5 Time: -1
+Individual:6 Time: -1
+Individual:7 Time: -1
+Individual:8 Time: -1
+Individual:9 Time: -1
+Individual:10 Time: -1
+Individual:11 Time: -1
+Individual:12 Time: -1
+Individual:13 Time: -1
+Individual:14 Time: -1
+Individual:15 Time: -1
+Individual:16 Time: -1
+Individual:17 Time: -1
+Individual:18 Time: -1
+Individual:19 Time: -1
+Individual:20 Time: -1
+Individual:21 Time: -1
+Individual:22 Time: -1
+Individual:23 Time: -1
+Individual:24 Time: -1
+Generation: 2 Best Time : -1
+Individual:0 Time: -1
+Individual:1 Time: -1
+Individual:2 Time: -1
+Individual:3 Time: -1
+Individual:4 Time: -1
+Individual:5 Time: -1
+Individual:6 Time: -1
+Individual:7 Time: -1
+Individual:8 Time: -1
+Individual:9 Time: -1
+Individual:10 Time: -1
+Individual:11 Time: -1
+Individual:12 Time: -1
+Individual:13 Time: -1
+Individual:14 Time: -1
+Individual:15 Time: -1
+Individual:16 Time: -1
+Individual:17 Time: -1
+Individual:18 Time: -1
+Individual:19 Time: -1
+Individual:20 Time: -1
+Individual:21 Time: -1
+Individual:22 Time: -1
+Individual:23 Time: -1
+Individual:24 Time: -1
+Generation: 3 Best Time : -1

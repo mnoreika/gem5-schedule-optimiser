@@ -20,25 +20,43 @@ class GeneticAlgorithm():
         self.generation = self.populator.gen_initial()
         self.survivor_selector = survivor_selector
         self.time = str(datetime.now())
-        self.result = open('results/bodytrack/r_' + self.time, 'a+')
-        self.logger = open('logs/bodytrack/log_' + self.time, 'a+')
-        
+        self.result = open('results/r_' + self.time, 'a+')
+        self.logger = open('logs/log_' + self.time, 'a+')
 
     def evaluation(self):
-        self.eval_generation = self.evaluator.calculate_fitness(self.generation)
+        eval_results = self.evaluator.calculate_fitness(self.generation) 
 
-        # Log fitness values
-        for i in range(len(self.eval_generation)):
-            self.logger.write("Individual:" + str(i) + " Time: " + 
-                str(1 / self.eval_generation[i][1]) + "\n") 
+        # Build eval population list
+        self.eval_generation = []
 
-        self.logger.flush()    
+        for i in range(len(eval_results)):
+            fitness = 1 / int(eval_results[i])
+            self.eval_generation.append((self.generation[i], fitness))
+
+        self.eval_generation = sorted(self.eval_generation, key = lambda x: x[1])
 
         # Store the current best chromosome
-        best_file = open('results/bodytrack/best_' + self.time, 'w')
+        best_file = open('results/best_' + self.time, 'w')
         best_chrom = "".join(map(str, self.eval_generation[self.population_size - 1][0]))
         best_file.write(best_chrom) 
         best_file.close()
+
+        #Log results after each generation
+        for i in range(len(eval_results)):
+            self.logger.write("Individual:" + str(i) + " Time: " + 
+                str(eval_results[i]) + "\n") 
+
+        best_time = min(eval_results)
+        res_message = str(self.gen_count) + "," + best_time + "\n"
+        self.result.write(res_message)
+        self.result.flush()
+
+        log_message = "Generation: " + str(self.gen_count) + " Best Time : "
+        log_message += best_time
+
+        print (log_message)
+        self.logger.write(log_message + "\n")
+        self.logger.flush()
 
     def selection(self):
         self.parents = self.parent_selector.select(self.eval_generation, 
@@ -57,9 +75,9 @@ class GeneticAlgorithm():
         self.generation = new_generation
 
     def search(self):
-        gen_count = 0
+        self.gen_count = 0
         
-        # log initial set up
+        # Log search settings
         self.logger.write("--- Running searcher --- " +
             "\nPopulation Size: " + str(self.population_size) +
             "\nChromosome Length: " + str(self.chrom_length) + 
@@ -72,28 +90,16 @@ class GeneticAlgorithm():
             "\nSurvival Selector: " + str(self.survivor_selector)
             + "\n\n")
 
-        self.result.write("generation,hfitness\n")
+        self.result.write("generation,besttime\n")
 
-        while gen_count < 100:
+        while self.gen_count < 100:
             self.evaluation()
             self.selection()
             self.crossover()
             self.mutation()
             self.survival()
 
-            # Log results after each generation
-            res_message = str(gen_count) + "," + str(self.eval_generation[self.population_size - 1][1]) + "\n"
-            self.result.write(res_message)
-            self.result.flush()
-
-            log_message = "Generation: " + str(gen_count) + " Best Time : "
-            log_message += str(1 / self.eval_generation[self.population_size - 1][1])
-
-            print (log_message)
-            self.logger.write(log_message + "\n")
-            self.logger.flush()
-
-            gen_count += 1
+            self.gen_count += 1
             
 
         self.logger.close() 

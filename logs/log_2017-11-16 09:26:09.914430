@@ -1,0 +1,89 @@
+--- Running searcher --- 
+Population Size: 25
+Chromosome Length: 200000
+Evaluator: <distributor.Distributor object at 0x7fb4032e66a0>
+Parent Selector:<tournament.Tournament object at 0x7fb3fb218438>
+Breeder: <onepointcross.OnePointCrossover object at 0x7fb3f5695588>
+Breeding Size: 4
+Mutator: <multmut.MultipleMutator object at 0x7fb3f5695630>
+Mutation Rate: 0.4
+Survival Selector: <elitism.Elitism object at 0x7fb3f5d2d7b8>
+
+Individual:0 Time: 64318
+Individual:1 Time: 72803
+Individual:2 Time: 63897
+Individual:3 Time: 67537
+Individual:4 Time: 66764
+Individual:5 Time: 71712
+Individual:6 Time: 68850
+Individual:7 Time: 71760
+Individual:8 Time: 76023
+Individual:9 Time: 67156
+Individual:10 Time: 65749
+Individual:11 Time: 63259
+Individual:12 Time: 66074
+Individual:13 Time: 68570
+Individual:14 Time: 53193
+Individual:15 Time: 64782
+Individual:16 Time: 57764
+Individual:17 Time: 70883
+Individual:18 Time: 65704
+Individual:19 Time: 67186
+Individual:20 Time: 73573
+Individual:21 Time: 64915
+Individual:22 Time: 64464
+Individual:23 Time: 61135
+Individual:24 Time: 58699
+Generation: 0 Best Time : 53193
+Individual:0 Time: 61135
+Individual:1 Time: 53193
+Individual:2 Time: 70452
+Individual:3 Time: 59790
+Individual:4 Time: 60594
+Individual:5 Time: 62945
+Individual:6 Time: 62798
+Individual:7 Time: 59558
+Individual:8 Time: 62228
+Individual:9 Time: 71410
+Individual:10 Time: 67246
+Individual:11 Time: 73759
+Individual:12 Time: 65373
+Individual:13 Time: 79589
+Individual:14 Time: 65704
+Individual:15 Time: 64915
+Individual:16 Time: 64782
+Individual:17 Time: 64464
+Individual:18 Time: 70452
+Individual:19 Time: 60594
+Individual:20 Time: 79589
+Individual:21 Time: 61135
+Individual:22 Time: 58699
+Individual:23 Time: 57764
+Individual:24 Time: 53193
+Generation: 1 Best Time : 53193
+Individual:0 Time: 64142
+Individual:1 Time: 60778
+Individual:2 Time: 58955
+Individual:3 Time: 61519
+Individual:4 Time: 68127
+Individual:5 Time: 64695
+Individual:6 Time: 62798
+Individual:7 Time: 71915
+Individual:8 Time: 73085
+Individual:9 Time: 66802
+Individual:10 Time: 65938
+Individual:11 Time: 61634
+Individual:12 Time: 69115
+Individual:13 Time: 79589
+Individual:14 Time: 65938
+Individual:15 Time: 58955
+Individual:16 Time: 61135
+Individual:17 Time: 71880
+Individual:18 Time: 71880
+Individual:19 Time: 64695
+Individual:20 Time: 79589
+Individual:21 Time: 61135
+Individual:22 Time: 57764
+Individual:23 Time: 61519
+Individual:24 Time: 53193
+Generation: 2 Best Time : 53193

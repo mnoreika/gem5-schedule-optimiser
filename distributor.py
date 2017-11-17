@@ -5,11 +5,9 @@ from datetime import datetime
 from multiprocessing import Pool, Manager, Value
 
 class Distributor():
-    eval_generation = Manager().list()
     counter = Value('i', 0)
 
     def __init__(self, host_number):
-        self.manager = Manager()
         self.host_number = host_number
         self.available_hosts = []
 
@@ -28,7 +26,7 @@ class Distributor():
 
             schedule = "".join(map(str, chromosome))
 
-            with open("tmpSched2/" + str(job_id), "w") as file:
+            with open("tmpSched/" + str(job_id), "w") as file:
                 file.write(schedule)    
 
             print (hostname, ": running simulation...") 
@@ -40,20 +38,18 @@ class Distributor():
             stdin.channel.shutdown_write()
             stdout.channel.recv_exit_status()
 
-            result = stdout.readlines()[0]
-            print ("Evaluated:", hostname, result)
 
-            fitness = 1 / int(result)
-            Distributor.eval_generation.append((chromosome, fitness))   
         except:
-            Distributor.eval_generation.append((chromosome, -1))  
+            with open("tmpSched/" + str(job_id), "w") as file:
+                file.write("9999999") 
+
             print (hostname, ": remote evaluation failed!")
             print (sys.exc_info()[0])
 
     def find_hosts(self):
         # Find available hosts
-        # hosts = ['pc3-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 80) if x != 32]
-        hosts = ['pc2-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 100) if x != 32]
+        hosts = ['pc3-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 80)]
+        #hosts = ['pc2-0' + str(x) + '-l.cs.st-andrews.ac.uk' for x in range(10, 100) if x != 26 and x!= 40 and x!=93]
 
         for host in hosts:
             response = os.system("timeout 0.2 ping -c 1 -i 0.2 " + host)
@@ -72,9 +68,6 @@ class Distributor():
         with open("pass", "r") as file:
             ssh_password = file.readline()
 
-        # Reset the result list
-        Distributor.eval_generation[:] = []
-
         # Spawn worker processes on different hosts and perform the simulations
         worker_pool = Pool(self.host_number)
         worker_pool.starmap(Distributor.evaluate_remotely, zip(self.available_hosts,
@@ -83,4 +76,15 @@ class Distributor():
         worker_pool.close()
         worker_pool.join()
 
-        return sorted(Distributor.eval_generation, key = lambda x: x[1])
+        eval_results = []
+
+        for i in range(len(population)):
+            with open("tmpSched/" + str(i), "r") as file:
+                result = file.read()
+
+                if len(result) < 10:
+                    eval_results.append(result)
+                else:
+                    eval_results.append("9999999")
+
+        return eval_results
